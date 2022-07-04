@@ -1,5 +1,19 @@
 # oreilly-library
 
+## Setup:
+
+Install kubernetes, docker, and the required python packages with the below command. Your machine must have enough storage for k8s persistent volume(s).
+
+```bash
+pip install -r ./app/requirements.txt
+```
+
+## Usage:
+
+```bash
+sudo chmod +x ./build.sh && sudo ./build.sh
+sudo chmod +x ./run.sh && sudo ./run.sh
+```
 
 ## Functional Requirements:
 
