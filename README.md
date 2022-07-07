@@ -2,11 +2,7 @@
 
 ## Setup:
 
-Install kubernetes, docker, and the required python packages with the below command. Your machine must have enough storage for k8s persistent volume(s).
-
-```bash
-pip install -r ./app/requirements.txt
-```
+Install kubernetes and docker. Your machine must have enough storage for k8s persistent volume(s).
 
 ## Usage:
 
@@ -17,10 +13,9 @@ sudo chmod +x ./run.sh && sudo ./run.sh
 
 ## Functional Requirements:
 
-User should be able to find book metadata by supplying the author, ISBN, title, or description fields to a request.
+Using a provided O'Reilly search endpoint, user should be able to find book metadata by supplying the author, ISBN, title, or description fields to a request.
 
 User should be able to add book metadata.
-
 
 ## Non-Functional Requirements:
 

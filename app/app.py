@@ -11,7 +11,7 @@ from services.mysql_repository import MySqlRepository
 
 app = Flask(__name__)
 
-my_sql_repository: MySqlRepository = MySqlRepository("localhost", 3307, "password", "books")
+my_sql_repository: MySqlRepository = MySqlRepository("localhost", 3306, "password", "books")
 
 book_query_factory: BookQueryFactory = BookQueryFactory()
 
@@ -21,9 +21,14 @@ _book_metadata_service: BookMetadataService = BookMetadataService(_book_metadata
 
 @app.route("/")
 def hello():
-    return _book_metadata_service.find_books_by_search_query({
-      "author": "demarcus cousins"
-    })
-
+    return {
+      "books": 
+          _book_metadata_service.find_books_by_search_query({
+            "author": "robert martin",
+            "title": "clean code"
+          })
+    }
+    
+    
 if __name__ == "__main__":
     app.run(host='0.0.0.0')

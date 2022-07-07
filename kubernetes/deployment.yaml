@@ -1,32 +1,38 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-python-service
+  name: oreilly-library-service
 spec:
   selector:
-    app: hello-python
+    app: oreilly-library
   ports:
   - protocol: "TCP"
-    port: 6000
+    port: 8000
     targetPort: 5000
   type: LoadBalancer
 
 
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-python
+  name: oreilly-library
+  labels:
+    app: oreilly-library
 spec:
   replicas: 4
+  selector:
+    matchLabels:
+      app: oreilly-library
   template:
     metadata:
       labels:
-        app: hello-python
+        app: oreilly-library
     spec:
       containers:
-      - name: hello-python
-        image: hello-python:latest
+      - name: oreilly-library
+        image: oreilly-library:latest
         imagePullPolicy: Never
         ports:
         - containerPort: 5000
+        
