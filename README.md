@@ -4,10 +4,34 @@
 
 Install kubernetes and docker. Your machine must have enough storage for k8s persistent volume(s).
 
+After running run.sh or run.ps1, connect to the mysql database with the following command:
+
+```bash
+kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -- mysql -h mysql -ppassword
+```
+
+Then, in the attached shell, run the following commands:
+
+```bash
+CREATE DATABASE BookLibrary;
+USE DATABASE BookLibrary;
+CREATE TABLE book_metadata(
+  guid VARCHAR(36) PRIMARY KEY,
+  title VARCHAR(255),
+  author VARCHAR(255),
+  description VARCHAR(1000),
+  isbn VARCHAR(13),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+
+```
+
+To load books into the mysql database from books returned from the oreilly library API, visit/GET request the following URL:
+
+http://localhost:5000/load
 ## Usage:
 
 ```bash
-sudo chmod +x ./build.sh && sudo ./build.sh
 sudo chmod +x ./run.sh && sudo ./run.sh
 ```
 

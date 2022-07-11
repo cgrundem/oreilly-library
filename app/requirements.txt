@@ -1,2 +1,7 @@
 Flask
+Flask-Ext
+Flask-MySQL==1.5.2
 requests
+PyMySQL
+mysql-connector-python
+cryptography

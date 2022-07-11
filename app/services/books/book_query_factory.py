@@ -1,4 +1,4 @@
-
+import urllib.parse
 
 class BookQueryFactory:
   def __init__(self):
@@ -18,3 +18,13 @@ class BookQueryFactory:
         result += condition
     return result
     
+  def make_oreilly_query_request_model(self, query):
+      result = ""
+      
+      if "title" in query and query["title"]:
+        result += "title:" + urllib.parse.quote(query["title"]) + " "
+      if "author" in query and query["author"]: 
+        result += "author:" + urllib.parse.quote(query["author"]) + " "
+      if "isbn" in query and query["isbn"]:
+        result += "archive_id:" + urllib.parse.quote(query["isbn"]) + " "
+      return result.rstrip()
